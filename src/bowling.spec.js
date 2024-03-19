@@ -1,7 +1,11 @@
-import Game from './bowling.js'
+import Game from './bowling.js';
 
 describe("Bowling", () => {
-    const game = new Game();
+    let game;
+
+    beforeEach(() => {
+        game = new Game();
+    });
 
     const rollMany = (n, pins) => {
         for (let i = 0; i < n; i++) {
@@ -18,4 +22,16 @@ describe("Bowling", () => {
         rollMany(20,1);
         expect(game.getScore()).toEqual(20);
       });
-  });
+
+    it("deberia calcular el puntaje con un spare", () => {
+        rollSpare();
+        game.roll(3);
+        rollMany(17,0);
+        expect(game.getScore()).toEqual(16);
+    });
+
+    const rollSpare = () => {
+        game.roll(5);
+        game.roll(5);
+    };
+});
