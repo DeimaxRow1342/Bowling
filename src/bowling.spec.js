@@ -46,4 +46,9 @@ describe("Bowling", () => {
         rollMany(16, 0);
         expect(game.getScore()).toEqual(24);
     });
+
+    it("deberia calcular el puntaje de un juego perfecto", () => {
+        rollMany(12,10);
+        expect(game.getScore()).toEqual(300);
+    });
 });
